@@ -1,6 +1,8 @@
 import sys
 import pathlib
 
+import pytest
+
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import validate_site
 
@@ -224,3 +226,34 @@ def test_family_sharing_in_comment_only_fails(tmp_path):
     write_index(tmp_path, html)
     errors = validate_site.check_family_sharing(str(tmp_path))
     assert any("FAMILY_SHARING" in e for e in errors)
+
+
+# ── REVIEWER fix: AC-6 scarcity terms + AC-11 word-boundary negative ─────────
+
+@pytest.mark.parametrize("term", [
+    "limited time",
+    "hurry",
+    "only 3 left",
+    "countdown",
+])
+def test_banned_word_scarcity_terms(tmp_path, term):
+    """AC-6: each scarcity term in visible text must trigger BANNED_WORD."""
+    write_index(tmp_path, f"<html><body><p>{term}</p></body></html>")
+    errors = validate_site.check_banned_words(str(tmp_path))
+    assert any("BANNED_WORD" in e for e in errors), (
+        f"Expected BANNED_WORD error for scarcity term '{term}', got: {errors}"
+    )
+
+
+def test_banned_word_pip_word_boundary_ignores_pipeline(tmp_path):
+    """AC-11: 'Pipeline' and 'Loomiville' must NOT trigger Pip/Loomi rules (word boundary)."""
+    write_index(
+        tmp_path,
+        "<html><body><p>Pipeline is a CI tool. Loomiville is a city.</p></body></html>",
+    )
+    errors = validate_site.check_banned_words(str(tmp_path))
+    banned = [
+        e for e in errors
+        if "BANNED_WORD" in e and ("pip" in e.lower() or "loomi" in e.lower())
+    ]
+    assert banned == [], f"Word-boundary false positives detected: {banned}"
