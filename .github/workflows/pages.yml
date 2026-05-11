@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  validate:
+    name: Validate site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run site validator
+        run: python3 scripts/validate_site.py
+
+  lighthouse:
+    name: Lighthouse mobile audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start local HTTP server
+        run: |
+          python3 -m http.server 8080 &
+          sleep 2
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: http://localhost:8080/
+          configPath: lighthouserc.json
+          temporaryPublicStorage: true

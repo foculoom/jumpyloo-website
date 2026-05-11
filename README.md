@@ -1,5 +1,7 @@
 # jumpyloo-website
 
+![CI](https://github.com/foculoom/jumpyloo-website/actions/workflows/pages.yml/badge.svg)
+
 Source for [https://jumpyloo.com/](https://jumpyloo.com/) — the dedicated landing page for Jumpyloo, a Foculoom LLC product.
 
 ## Build & deploy
