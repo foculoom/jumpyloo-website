@@ -3,13 +3,392 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jumpyloo — coming soon</title>
-  <meta name="robots" content="noindex,nofollow">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>Jumpyloo — Colorful Endless Runner for the Whole Family</title>
+  <meta name="description" content="Colorful endless runner for the whole family. Tap to jump, collect coins, unlock 10 characters. No ads, no tracking. Ages 4 and up.">
+  <meta name="robots" content="index,follow">
+
+  <!-- CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://*.foculoombrand.com data:; style-src 'self' 'unsafe-inline'; script-src 'none'; base-uri 'self'; form-action 'none'">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://jumpyloo.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Jumpyloo">
+  <meta property="og:title" content="Jumpyloo — Colorful Endless Runner for the Whole Family">
+  <meta property="og:description" content="Colorful endless runner for the whole family. Tap to jump, collect coins, unlock 10 characters. No ads, no tracking. Ages 4 and up.">
+  <meta property="og:url" content="https://jumpyloo.com/">
+  <meta property="og:image" content="/assets/og/jumpyloo-v1.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jumpyloo — Colorful Endless Runner for the Whole Family">
+  <meta name="twitter:description" content="Colorful endless runner for the whole family. Tap to jump, collect coins, unlock 10 characters. No ads, no tracking. Ages 4 and up.">
+  <meta name="twitter:image" content="/assets/og/jumpyloo-v1.png">
+
+  <!-- JSON-LD: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Jumpyloo",
+    "url": "https://jumpyloo.com/",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "iOS",
+    "contentRating": "4+",
+    "description": "Jumpyloo by Foculoom — a colorful endless runner for the whole family. Tap to jump, collect coins, and beat your best.",
+    "author": {
+      "@type": "Organization",
+      "name": "Foculoom LLC",
+      "url": "https://foculoom.com/"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free to download"
+      },
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Optional unlock pack available for additional characters and content"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ---- Reset & base ---- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #1A73E8;
+      --blue-dark:  #1558B0;
+      --green:      #34A853;
+      --yellow:     #F9AB00;
+      --bg:         #F0F8FF;
+      --surface:    #FFFFFF;
+      --text:       #1A1A2E;
+      --text-muted: #5F6368;
+      --badge-bg:   #E8F5E9;
+      --badge-txt:  #2E7D32;
+      --radius:     14px;
+      --radius-sm:  8px;
+      --gap:        1.25rem;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.55;
+      min-width: 320px;
+    }
+
+    /* ---- Layout ---- */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* ---- Header / Hero ---- */
+    .hero {
+      background: linear-gradient(160deg, #E3F2FD 0%, #E8F5E9 60%, #FFFDE7 100%);
+      padding: 2.5rem 1.25rem 2rem;
+      text-align: center;
+    }
+
+    .hero__wordmark {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--blue-dark);
+      line-height: 1.1;
+    }
+
+    .hero__byline {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero__tagline {
+      margin-top: 1rem;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--text);
+      max-width: 30ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero__cta-row {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* App Store CTA button */
+    .btn-appstore {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.85rem 1.5rem;
+      border-radius: 50px;
+      min-height: 52px;
+      letter-spacing: 0.01em;
+      transition: background 0.15s;
+      box-shadow: 0 2px 8px rgba(26,115,232,0.25);
+    }
+    .btn-appstore:hover,
+    .btn-appstore:focus {
+      background: var(--blue-dark);
+      outline: 3px solid var(--yellow);
+      outline-offset: 2px;
+    }
+    .btn-appstore__icon {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    /* 4+ age badge */
+    .badge-age {
+      display: inline-block;
+      background: var(--badge-bg);
+      color: var(--badge-txt);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.3rem 0.65rem;
+      border-radius: 50px;
+      border: 1.5px solid #A5D6A7;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    /* ---- Trust strip ---- */
+    .trust-strip {
+      background: var(--surface);
+      border-top: 1px solid #E0E7EF;
+      border-bottom: 1px solid #E0E7EF;
+      padding: 0.75rem 1.25rem;
+    }
+    .trust-strip__list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1.25rem;
+      list-style: none;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .trust-strip__list li::before { content: "✓ "; color: var(--green); }
+
+    /* ---- Section headings ---- */
+    .section { padding: 2rem 1.25rem; }
+    .section + .section { padding-top: 0; }
+
+    .section__title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    /* ---- Feature cards ---- */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--gap);
+    }
+
+    @media (min-width: 560px) {
+      .cards { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+
+    .card__emoji {
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .card__text {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ---- IAP / disclosure block ---- */
+    .disclosure {
+      background: var(--surface);
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.1rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .disclosure p + p { margin-top: 0.5rem; }
+
+    /* ---- Footer ---- */
+    .site-footer {
+      background: #1A1A2E;
+      color: #B0BEC5;
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    .site-footer a {
+      color: #90CAF9;
+      text-decoration: underline;
+    }
+    .site-footer a:hover { color: #fff; }
+
+    .site-footer__links {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .site-footer__copy { color: #78909C; }
+
+    /* ---- Accessibility ---- */
+    :focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 2px;
+    }
+
+    /* ---- Skip link ---- */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--yellow);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      font-weight: 700;
+      border-radius: 0 0 var(--radius-sm) 0;
+      z-index: 100;
+    }
+    .skip-link:focus { left: 0; }
+  </style>
 </head>
 <body>
-  <h1>Jumpyloo</h1>
-  <p>Site coming soon. <a href="https://foculoom.com/jumpyloo">View on foculoom.com</a> in the meantime.</p>
-  <p><small>&copy; Foculoom LLC</small></p>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="container">
+      <p class="hero__wordmark">Jumpyloo</p>
+      <p class="hero__byline">by Foculoom</p>
+      <p class="hero__tagline">A colorful endless runner for the whole family. Tap to jump, collect coins, and beat your best.</p>
+      <div class="hero__cta-row">
+        <a
+          href="https://apps.apple.com/app/jumpyloo/id6766109614"
+          class="btn-appstore"
+          aria-label="Download Jumpyloo on the App Store"
+          rel="noopener"
+        >
+          <span class="btn-appstore__icon" aria-hidden="true">&#xf8ff;</span>
+          Download on the App Store
+        </a>
+        <span class="badge-age" aria-label="Age rating: 4 and up">4+</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== TRUST STRIP ===================== -->
+  <div class="trust-strip" aria-label="App highlights">
+    <ul class="trust-strip__list">
+      <li>No ads</li>
+      <li>No tracking</li>
+      <li>No account required</li>
+      <li>Progress saved on this device</li>
+    </ul>
+  </div>
+
+  <!-- ===================== MAIN ===================== -->
+  <main id="main">
+
+    <!-- What you get -->
+    <section class="section" aria-labelledby="features-heading">
+      <div class="container">
+        <h1 id="features-heading" class="section__title">What you get</h1>
+        <div class="cards">
+          <div class="card">
+            <div class="card__emoji" aria-hidden="true">🎮</div>
+            <p class="card__text">10 playable characters, each with a different jump power</p>
+          </div>
+          <div class="card">
+            <div class="card__emoji" aria-hidden="true">📅</div>
+            <p class="card__text">Daily missions and streak rewards</p>
+          </div>
+          <div class="card">
+            <div class="card__emoji" aria-hidden="true">🌍</div>
+            <p class="card__text">3 worlds: Meadow, Forest, and Mountain</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IAP disclosure -->
+    <section class="section" aria-labelledby="iap-heading">
+      <div class="container">
+        <h2 id="iap-heading" class="section__title">In-app purchase</h2>
+        <div class="disclosure">
+          <p>An optional unlock pack is available for additional characters and content. Supports Ask to Buy.</p>
+          <p>Supports Family Sharing.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="site-footer__links" aria-label="Footer links">
+        <a href="https://foculoom.com/support.html">Support</a>
+        <a href="https://foculoom.com/privacy.html">Privacy Policy</a>
+        <a href="https://foculoom.com/">Foculoom</a>
+      </nav>
+      <p class="site-footer__copy">&copy; Foculoom LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
 </body>
 </html>

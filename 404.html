@@ -3,10 +3,88 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>404 — Jumpyloo</title>
+  <title>Page Not Found — Jumpyloo</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://*.foculoombrand.com data:; style-src 'self' 'unsafe-inline'; script-src 'none'; base-uri 'self'; form-action 'none'">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #F0F8FF;
+      color: #1A1A2E;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1.25rem;
+    }
+
+    .code {
+      font-size: 5rem;
+      font-weight: 800;
+      color: #1A73E8;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .heading {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 0.75rem;
+      color: #1A1A2E;
+    }
+
+    .message {
+      margin-top: 0.5rem;
+      color: #5F6368;
+      font-size: 1rem;
+    }
+
+    .btn-home {
+      display: inline-block;
+      margin-top: 1.75rem;
+      background: #1A73E8;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.85rem 1.75rem;
+      border-radius: 50px;
+      min-height: 52px;
+      line-height: 1.25;
+      box-shadow: 0 2px 8px rgba(26,115,232,0.25);
+    }
+    .btn-home:hover, .btn-home:focus {
+      background: #1558B0;
+      outline: 3px solid #F9AB00;
+      outline-offset: 2px;
+    }
+
+    .footer {
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: #78909C;
+    }
+    .footer a { color: #1A73E8; }
+  </style>
 </head>
 <body>
-  <h1>404</h1>
-  <p>Page not found. <a href="/">Back to home.</a></p>
+
+  <p class="code" aria-hidden="true">404</p>
+  <h1 class="heading">Page not found</h1>
+  <p class="message">This page doesn't exist. Let's get you back to the fun.</p>
+  <a href="/" class="btn-home">Back to Jumpyloo</a>
+
+  <footer class="footer">
+    <p>&copy; Foculoom LLC &mdash;
+      <a href="https://foculoom.com/support.html">Support</a> &middot;
+      <a href="https://foculoom.com/privacy.html">Privacy</a>
+    </p>
+  </footer>
+
 </body>
 </html>
