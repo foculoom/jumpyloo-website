@@ -304,6 +304,56 @@
       z-index: 100;
     }
     .skip-link:focus { left: 0; }
+
+    /* ---- App Store badge image CTA ---- */
+    .badge-appstore {
+      display: inline-block;
+      text-decoration: none;
+      line-height: 0;
+    }
+    .badge-appstore:focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    /* ---- Status badge ---- */
+    .status-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 50px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .status-available {
+      background: var(--badge-bg);
+      color: var(--badge-txt);
+      border: 1.5px solid #A5D6A7;
+    }
+
+    /* ---- Download section ---- */
+    .section__kicker {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--green);
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .section--download {
+      background: var(--surface);
+      border-top: 1px solid #E0E7EF;
+      text-align: center;
+    }
+    .section--download .section__title { margin-bottom: 0.5rem; }
+    .meta {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
   </style>
 </head>
 <body>
@@ -316,25 +366,10 @@
       <p class="hero__wordmark">Jumpyloo</p>
       <p class="hero__byline">by Foculoom</p>
       <p class="hero__tagline">A colorful endless runner for the whole family. Tap to jump, collect coins, and beat your best.</p>
+      <span class="status-badge status-available">Available on the App Store</span>
       <div class="hero__cta-row">
-        <a
-          href="https://apps.apple.com/app/jumpyloo/id6766109614"
-          class="btn-appstore"
-          aria-label="Download Jumpyloo on the App Store"
-          rel="noopener"
-        >
-          <span class="btn-appstore__icon" aria-hidden="true">&#xf8ff;</span>
-          Download on the App Store
-        </a>
-        <a
-          href="https://testflight.apple.com/join/wCDC9Vzx"
-          class="btn-appstore"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Join Jumpyloo beta on TestFlight"
-        >
-          <span class="btn-appstore__icon" aria-hidden="true">&#x1F9EA;</span>
-          Join the Beta on TestFlight
+        <a href="https://apps.apple.com/app/id6766109614" class="badge-appstore" rel="noopener" target="_blank" aria-label="Download Jumpyloo on the App Store">
+          <img src="/assets/badges/appstore-badge.svg" alt="Download on the App Store" width="156" height="52">
         </a>
         <span class="badge-age" aria-label="Age rating: 4 and up">4+</span>
       </div>
@@ -383,6 +418,18 @@
           <p>An optional unlock pack is available for additional characters and content. Supports Ask to Buy.</p>
           <p>Supports Family Sharing.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section class="section section--download" aria-labelledby="download-heading">
+      <div class="container">
+        <p class="section__kicker">Get the game</p>
+        <h2 id="download-heading" class="section__title">Available now on iPhone and iPad.</h2>
+        <p class="meta">Free to download. Optional unlock pack available for more characters and content.</p>
+        <a href="https://apps.apple.com/app/id6766109614" class="badge-appstore" rel="noopener" target="_blank" aria-label="Download Jumpyloo on the App Store">
+          <img src="/assets/badges/appstore-badge.svg" alt="Download on the App Store" width="156" height="52">
+        </a>
       </div>
     </section>
 
