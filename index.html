@@ -185,6 +185,22 @@
       white-space: nowrap;
     }
 
+    /* Coming Soon status badge */
+    .status-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.3rem 0.65rem;
+      border-radius: 50px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .status-coming {
+      background: #FFF8E1;
+      color: #E65100;
+      border: 1.5px solid #FFCC80;
+    }
+
     /* ---- Trust strip ---- */
     .trust-strip {
       background: var(--surface);
@@ -317,15 +333,7 @@
       <p class="hero__byline">by Foculoom</p>
       <p class="hero__tagline">A colorful endless runner for the whole family. Tap to jump, collect coins, and beat your best.</p>
       <div class="hero__cta-row">
-        <a
-          href="https://apps.apple.com/app/jumpyloo/id6766109614"
-          class="btn-appstore"
-          aria-label="Download Jumpyloo on the App Store"
-          rel="noopener"
-        >
-          <span class="btn-appstore__icon" aria-hidden="true">&#xf8ff;</span>
-          Download on the App Store
-        </a>
+        <span class="status-badge status-coming">Coming Soon</span>
         <a
           href="https://testflight.apple.com/join/wCDC9Vzx"
           class="btn-appstore"
