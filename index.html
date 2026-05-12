@@ -7,8 +7,12 @@
   <meta name="description" content="Colorful endless runner for the whole family. Tap to jump, collect coins, unlock 10 characters. No ads, no tracking. Ages 4 and up.">
   <meta name="robots" content="index,follow">
 
+  <!-- Font preloads -->
+  <link rel="preload" href="/assets/fonts/bloom-play/BloomPlay-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/bloom-text/BloomText-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
   <!-- CSP -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://*.foculoombrand.com data:; style-src 'self' 'unsafe-inline'; script-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://*.foculoombrand.com data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'none'; base-uri 'self'; form-action 'none'">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://jumpyloo.com/">
@@ -64,6 +68,35 @@
   </script>
 
   <style>
+    @font-face {
+      font-family: 'Bloom Play';
+      src: url('/assets/fonts/bloom-play/BloomPlay-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Bloom Play';
+      src: url('/assets/fonts/bloom-play/BloomPlay-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Bloom Text';
+      src: url('/assets/fonts/bloom-text/BloomText-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Bloom Text';
+      src: url('/assets/fonts/bloom-text/BloomText-SemiBold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
     /* ---- Reset & base ---- */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -71,13 +104,13 @@
       --blue:       #41B8FF;
       --blue-dark:  #2B2F86;
       --green:      #4ECB4E;
-      --yellow:     #F9AB00;
+      --yellow:     #FFB800;
       --bg:         #FFF8F0;
       --surface:    #FFFFFF;
       --text:       #2A2A3A;
       --text-muted: #5F6368;
-      --badge-bg:   #E8F5E9;
-      --badge-txt:  #2E7D32;
+      --badge-bg:   #d9f5d9;
+      --badge-txt:  #144714;
       --radius:     14px;
       --radius-sm:  8px;
       --gap:        1.25rem;
@@ -86,7 +119,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Bloom Text', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
       font-size: 1rem;
@@ -103,14 +136,15 @@
 
     /* ---- Header / Hero ---- */
     .hero {
-      background: linear-gradient(160deg, #E3F2FD 0%, #E8F5E9 60%, #FFFDE7 100%);
+      background: var(--bg);
       padding: 2.5rem 1.25rem 2rem;
       text-align: center;
     }
 
     .hero__wordmark {
       font-size: 2.5rem;
-      font-weight: 800;
+      font-weight: 700;
+      font-family: 'Bloom Play';
       letter-spacing: -0.5px;
       color: var(--blue-dark);
       line-height: 1.1;
@@ -122,6 +156,14 @@
       margin-top: 0.15rem;
       letter-spacing: 0.03em;
       text-transform: uppercase;
+    }
+
+    .hero__art {
+      display: block;
+      width: min(320px, 80vw);
+      height: auto;
+      margin: 1.5rem auto 0;
+      border-radius: 24px;
     }
 
     .hero__tagline {
@@ -286,7 +328,7 @@
     }
 
     .site-footer a {
-      color: #90CAF9;
+      color: #41B8FF;
       text-decoration: underline;
     }
     .site-footer a:hover { color: #fff; }
@@ -299,7 +341,7 @@
       margin-bottom: 0.75rem;
     }
 
-    .site-footer__copy { color: #78909C; }
+    .site-footer__copy { color: #6B6B7B; }
 
     /* ---- Accessibility ---- */
     :focus-visible {
@@ -329,8 +371,9 @@
   <!-- ===================== HERO ===================== -->
   <header class="hero">
     <div class="container">
-      <p class="hero__wordmark">Jumpyloo</p>
+      <h1 class="hero__wordmark">Jumpyloo</h1>
       <p class="hero__byline">by Foculoom</p>
+      <img src="/assets/jumpyloo-hero.png" alt="Jumpyloo character Blob jumping over coins" class="hero__art" width="480" height="480" loading="eager">
       <p class="hero__tagline">A colorful endless runner for the whole family. Tap to jump, collect coins, and beat your best.</p>
       <div class="hero__cta-row">
         <span class="status-badge status-coming">Coming Soon</span>
@@ -365,7 +408,7 @@
     <!-- What you get -->
     <section class="section" aria-labelledby="features-heading">
       <div class="container">
-        <h1 id="features-heading" class="section__title">What you get</h1>
+        <h2 id="features-heading" class="section__title">What you get</h2>
         <div class="cards">
           <div class="card">
             <div class="card__emoji" aria-hidden="true">🎮</div>
